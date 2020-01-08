@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '/home/cbyk-user/Documentos/Estudo/teste/src/css/pure-min.css';
-import '/home/cbyk-user/Documentos/Estudo/teste/src/css/menus-core-min.css';
+import './css/pure-min.css';
+import './css/menus-core-min.css';
 import './css/side-menu.css'
 class App extends Component {
   render() {
