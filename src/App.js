@@ -6,17 +6,23 @@ import $ from 'jquery'
 class App extends Component {
   constructor() {
     super();
-    this.state = { lista: [] };
+    this.state = { lista: [], empresa: [] };
   }
+
   componentWillMount() {
     $.ajax({
-      url: "http://cdc-react.herokuapp.com/api/autores",
+      url: "https://service-java-nobu.herokuapp.com/pessoa",
       dataType: 'json',
+
       success: function (resposta) {
         console.log(this);
         this.setState({ lista: resposta });
       }.bind(this)
     });
+  }
+  enviaForm(evento){
+    evento.preventDefault();
+    console.log("Dados sendo enviados");
   }
   render() {
     return (
@@ -47,7 +53,7 @@ class App extends Component {
           </div>
           <div className="content" id="content">
             <div className="pure-form pure-form-aligned">
-              <form className="pure-form pure-form-aligned">
+              <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
                 <div className="pure-control-group">
                   <label htmlFor="nome">Nome</label>
                   <input id="nome" type="text" name="nome" value="" />
@@ -79,7 +85,7 @@ class App extends Component {
                   {
                     this.state.lista.map((autor) => {
                       return (
-                        <tr>
+                        <tr key={autor.id}>
                           <td>{autor.nome}</td>
                           <td>{autor.email}</td>
                         </tr>
