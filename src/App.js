@@ -6,7 +6,7 @@ import $ from 'jquery'
 class App extends Component {
   constructor() {
     super();
-    this.state = { lista: [], empresa: [] };
+    this.state = { lista: [], empresa: [], size: [] };
   }
 
   componentWillMount() {
@@ -21,60 +21,39 @@ class App extends Component {
     });
   }
   enviaForm(evento){
+    let xd = '3';
     evento.preventDefault();
-    console.log("Dados sendo enviados");
+    const min = Math.ceil(0);
+    const max = Math.floor(20);
+    const a = Math.floor(Math.random() * (max - min)) + min
+    for (let index = 0; index < a; index++) {
+      xd = xd + '=';
+      
+    }
+    xd = xd +'D';
+    alert(xd)
+    // this.setState({size: xd})   
   }
   render() {
     return (
-      <div id="layout">
-
-        <a href="#menu" id="menuLink" className="menu-link">
-
-          <span></span>
-        </a>
-
-        <div id="menu">
-          <div className="pure-menu">
-            <a className="pure-menu-heading" href="#">Company</a>
-
-            <ul className="pure-menu-list">
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Autor</a></li>
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Livro</a></li>
-
-
-            </ul>
-          </div>
-        </div>
-
         <div id="main">
-          <div className="header">
-            <h1>Cadastro de Autores</h1>
+          <div class="header center">
+            <h1>SITE Xd</h1>
           </div>
-          <div className="content" id="content">
-            <div className="pure-form pure-form-aligned">
-              <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
-                <div className="pure-control-group">
-                  <label htmlFor="nome">Nome</label>
+          <div class="content center" id="content">
+            <div class="pure-form pure-form-aligned">
+              <form class="pure-form-stacked" onSubmit={this.enviaForm} method="post">
+                <div class="pure-control-group">
+                  <label htmlFkor="nome">Nome</label>
                   <input id="nome" type="text" name="nome" value="" />
                 </div>
-                <div className="pure-control-group">
-                  <label htmlFor="email">Email</label>
-                  <input id="email" type="email" name="email" value="" />
-                </div>
-                <div className="pure-control-group">
-                  <label htmlFor="senha">Senha</label>
-                  <input id="senha" type="password" name="senha" />
-                </div>
-                <div className="pure-control-group">
-                  <label></label>
-                  <button type="submit" className="pure-button pure-button-primary">Gravar</button>
+                <div class="pure-control-group">
+                  <button type="submit" class="pure-button pure-button-primary">Calcular Xd</button>
                 </div>
               </form>
-
             </div>
             <div>
-              <table className="pure-table">
+              <table class="pure-table">
                 <thead>
                   <tr>
                     <th>Nome</th>
@@ -97,9 +76,6 @@ class App extends Component {
             </div>
           </div>
         </div>
-
-
-      </div>
     );
   }
 }
