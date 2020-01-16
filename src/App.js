@@ -31,7 +31,7 @@ class App extends Component {
 
     }
     xd = xd + 'D';
-    alert("this.nome.value: " + xd) 
+    alert(this.nome.value + " XDDD SIZE:" + xd) 
     fetch('https://service-java-nobu.herokuapp.com/pessoa', {
       method: 'POST',
       headers: {
