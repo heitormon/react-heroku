@@ -40,6 +40,7 @@ class App extends Component {
       },
       body: JSON.stringify({ "nome": this.nome.value, "size": a })
     });
+    window.location.reload();
   }
   render() {
     return (
@@ -72,6 +73,11 @@ class App extends Component {
                 {
                   this.state.lista.map((autor) => {
                     let sizeXd = 3;
+                    let medida ="MIXURUKAKKK";
+                    
+                    if(autor.size >= 5 ){
+                      medida = "VAI CATA MAGA CARAI"
+                    }
                     for (let index = 0; index < autor.size; index++) {
                       sizeXd = sizeXd + "=";
                     }
@@ -80,7 +86,7 @@ class App extends Component {
 
                       <tr key={autor.id}>
                         <td>{autor.nome}</td>
-                        <td>{autor.size}</td>
+                        <td>{medida}</td>
                         <td>{sizeXd}</td>
                       </tr>
                     );
