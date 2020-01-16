@@ -20,7 +20,7 @@ class App extends Component {
       }.bind(this)
     });
   }
-  enviaForm(evento){
+  enviaForm(evento) {
     let xd = '3';
     evento.preventDefault();
     const min = Math.ceil(0);
@@ -28,54 +28,69 @@ class App extends Component {
     const a = Math.floor(Math.random() * (max - min)) + min
     for (let index = 0; index < a; index++) {
       xd = xd + '=';
-      
+
     }
-    xd = xd +'D';
-    alert(xd)
-    // this.setState({size: xd})   
+    xd = xd + 'D';
+    alert("this.nome.value: " + xd) 
+    fetch('https://service-java-nobu.herokuapp.com/pessoa', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "nome": this.nome.value, "size": a })
+    });
   }
   render() {
     return (
-        <div id="main">
-          <div class="header center">
-            <h1>SITE Xd</h1>
+      <div id="main">
+        <div class="header center">
+          <h1>SITE Xd</h1>
+        </div>
+        <div class="content center" id="content">
+          <div class="pure-form pure-form-aligned">
+            <form class="pure-form-stacked" onSubmit={this.enviaForm.bind(this)} method="post">
+              <div class="pure-control-group">
+                <label htmlFkor="nome">Nome</label>
+                <input id="nome" type="text" name="nome" ref={input => this.nome = input} />
+              </div>
+              <div class="pure-control-group">
+                <button type="submit" class="pure-button pure-button-primary">Calcular Xd</button>
+              </div>
+            </form>
           </div>
-          <div class="content center" id="content">
-            <div class="pure-form pure-form-aligned">
-              <form class="pure-form-stacked" onSubmit={this.enviaForm} method="post">
-                <div class="pure-control-group">
-                  <label htmlFkor="nome">Nome</label>
-                  <input id="nome" type="text" name="nome" value="" />
-                </div>
-                <div class="pure-control-group">
-                  <button type="submit" class="pure-button pure-button-primary">Calcular Xd</button>
-                </div>
-              </form>
-            </div>
-            <div>
-              <table class="pure-table">
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    this.state.lista.map((autor) => {
-                      return (
-                        <tr key={autor.id}>
-                          <td>{autor.nome}</td>
-                          <td>{autor.email}</td>
-                        </tr>
-                      );
-                    })
-                  }
-                </tbody>
-              </table>
-            </div>
+          <div>
+            <table class="pure-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>size</th>
+                  <th>SIZE Xd</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  this.state.lista.map((autor) => {
+                    let sizeXd = 3;
+                    for (let index = 0; index < autor.size; index++) {
+                      sizeXd = sizeXd + "=";
+                    }
+                    sizeXd = sizeXd + "D"
+                    return (
+
+                      <tr key={autor.id}>
+                        <td>{autor.nome}</td>
+                        <td>{autor.size}</td>
+                        <td>{sizeXd}</td>
+                      </tr>
+                    );
+                  })
+                }
+              </tbody>
+            </table>
           </div>
         </div>
+      </div>
     );
   }
 }
