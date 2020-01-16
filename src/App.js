@@ -76,7 +76,7 @@ class App extends Component {
                     let medida ="MIXURUKAKKK";
                     
                     if(autor.size >= 5 ){
-                      medida = "VAI CATA MAGA CARAI"
+                      medida = "VAI CATA MANGA CARAI"
                     }
                     for (let index = 0; index < autor.size; index++) {
                       sizeXd = sizeXd + "=";
